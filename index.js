@@ -9,6 +9,38 @@
  for you to use if you need it!
  */
 
+
+function createEmployeeRecord(ary){
+    let record
+    return record = { 
+        firstName: ary[0],
+        familyName: ary[1],
+        title: ary[2],
+        payPerHour: ary[3],
+        timeInEvents: [], 
+        timeOutEvents: []
+    }
+}
+
+function createEmployeeRecords(arys){
+    return arys.map(createEmployeeRecord)
+}
+
+function createDSObj(getType, dateStamp) {
+    return {type: getType, date: dateStamp.slice(0,10), hour: parseInt(dateStamp.slice(-4))}
+}
+
+function createTimeInEvent(obj, dateStamp){
+    obj.timeInEvents.push(createDSObj("TimeIn", dateStamp))
+    return obj
+}
+
+
+function createTimeOutEvent(obj, dateStamp){
+    obj.timeOutEvents.push(createDSObj("TimeOut", dateStamp))
+    return obj
+}
+
 let allWagesFor = function () {
     let eligibleDates = this.timeInEvents.map(function (e) {
         return e.date
